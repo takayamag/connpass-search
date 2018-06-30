@@ -120,30 +120,30 @@ a {
   color: #2c3e50;
 }
 table {
-	width: 100%;
-	border-collapse: collapse;
+  width: 100%;
+  border-collapse: collapse;
 }
 th.top {
   border-top: #b3b3b3 1px solid;
   width: 120px;
 }
 th {
-	border-bottom: #e3e3e3 1px solid;
-	border-left: #e3e3e3 1px solid;
-	text-align: left;
-	background: #f7f7f7;
-	padding: 10px;
-	font-weight: normal;
+  border-bottom: #e3e3e3 1px solid;
+  border-left: #e3e3e3 1px solid;
+  text-align: left;
+  background: #f7f7f7;
+  padding: 10px;
+  font-weight: normal;
   font-size: 14px;
 }
 td.top {
-	border-top: #b3b3b3 1px solid;
+  border-top: #b3b3b3 1px solid;
 }
 td {
-	border-bottom: #e3e3e3 1px solid;
-	border-right: #e3e3e3 1px solid;
-	text-align: left;
-	padding: 10px;
+  border-bottom: #e3e3e3 1px solid;
+  border-right: #e3e3e3 1px solid;
+  text-align: left;
+  padding: 10px;
   font-size: 14px;
 }
 .trim {
@@ -185,7 +185,6 @@ td {
 }
 .count-down {
   font-size: 16px;
-
   color: rgb(255, 123, 0);
 }
 </style>
