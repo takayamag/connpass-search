@@ -73,7 +73,8 @@
             <el-row>
               <el-col :span="24">
                 <ul>
-                  <li class="notice"><span class="text-red">注1: 当サイトはイベントの検索機能のみを有し、イベントへの申し込みを行うことは出来ません。</span></li>
+                  <li class="notice">当サイトは<strong><a href="https://connpass.com/" target="_blank">connpass</a></strong>様のAPIを利用したイベント検索サイトです。</li>
+                  <li class="notice">注1: 当サイトはイベントの検索を行うことが出来ますが、イベントの参加申し込みを行うことは出来ません。</li>
                   <li class="notice">注2: キーワードは半角/全角スペースで区切ると複数指定する事が出来ます。(2文字以上80文字以内を入力可能)</li>
                   <li class="notice">注3: 仕様上、都道府県を指定するとキーワード検索の条件として追加されます。</li>
                 </ul>
@@ -286,8 +287,5 @@ li.notice {
   color: red;
   margin: 0px;
   padding: 0px;
-}
-.text-red {
-  color: red;
 }
 </style>

@@ -8,17 +8,34 @@
       <div class="clearfix">
         <h1 class="trim">#{{ event.event_id }} - {{ event.title }}</h1>
       </div>
-      <div class="item">
-        <p><strong>概要</strong>: {{ event.catch !== '' ? event.catch : '(概要はありません)' }}</p>
-        <p><strong>開催日時</strong>：{{ event.started_at | localDateTime }}〜{{ event.ended_at | localDateTime }}</p>
-        <p><strong>開催場所</strong>: {{ event.address }}</p>
-        <p><strong>開催会場</strong>: {{ event.place }}</p>
-        <p><strong>参加者数/定員数</strong>：{{ event.accepted }}／{{ event.limit !== null ? event.limit : '-' }} (<strong>補欠者数</strong>: {{ event.waiting }})</p>
+      <div style="margin-bottom: 12px;">
+        <table summary="イベント詳細">
+          <tr>
+            <th class="top">概要</th>
+            <td class="top">{{ event.catch !== '' ? event.catch : '(概要はありません)' }}</td>
+          </tr>
+          <tr>
+            <th>開催日時</th>
+            <td>{{ event.started_at | localDateTime }}〜{{ event.ended_at | localDateTime }}</td>
+          </tr>
+          <tr>
+            <th>開催場所</th>
+            <td>{{ event.address }}</td>
+          </tr>
+          <tr>
+            <th>開催会場</th>
+            <td>{{ event.place }}</td>
+          </tr>
+          <tr>
+            <th>参加者数/定員数</th>
+            <td>{{ event.accepted }}／{{ event.limit !== null ? event.limit : '-' }} (補欠者数: {{ event.waiting }})</td>
+          </tr>
+        </table>
       </div>
     </a>
     <p v-if="event.series !== null">
       <span class="group">
-        <strong>グループ名</strong>: <a :href="event.series.url" target="_blank">{{ event.series.title }} (#{{ event.series.id }})</a>
+        <strong>グループ名</strong>: <a :href="event.series.url" target="_blank" class="group-link">{{ event.series.title }} (#{{ event.series.id }})</a>
       </span>
     </p>
   </el-card>
@@ -102,6 +119,33 @@ a {
   text-decoration: none;
   color: #2c3e50;
 }
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+th.top {
+  border-top: #b3b3b3 1px solid;
+  width: 120px;
+}
+th {
+	border-bottom: #e3e3e3 1px solid;
+	border-left: #e3e3e3 1px solid;
+	text-align: left;
+	background: #f7f7f7;
+	padding: 10px;
+	font-weight: normal;
+  font-size: 14px;
+}
+td.top {
+	border-top: #b3b3b3 1px solid;
+}
+td {
+	border-bottom: #e3e3e3 1px solid;
+	border-right: #e3e3e3 1px solid;
+	text-align: left;
+	padding: 10px;
+  font-size: 14px;
+}
 .trim {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -113,6 +157,9 @@ a {
 }
 .group {
   font-size: 11pt;
+}
+.group-link {
+  text-decoration:underline;
 }
 .date {
   font-size: small;
