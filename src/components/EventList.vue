@@ -1,20 +1,27 @@
 <template>
-  <li class="panel">
+  <el-card class="box-card">
     <a :href="event.event_url" target="_blank">
-      <p class="trim blue" style="font-weight: bold">
-        [{{ calcRemainingDate(event.started_at, event.ended_at) }}] #{{ event.event_id }} - {{ event.title }}
-      </p>
-      <p>概要: {{ event.catch !== '' ? event.catch : '(概要はありません)' }}</p>
-      <p>開催日時：{{ event.started_at | localDateTime }}〜{{ event.ended_at | localDateTime }}</p>
-      <p>開催場所: {{ event.address }}</p>
-      <p>開催会場: {{ event.place }}</p>
-      <p>参加者数/定員数：{{ event.accepted }}／{{ event.limit }} (補欠者数: {{ event.waiting }})</p>
-      <p>(最終更新日時: {{ event.updated_at | localDateTime }})</p>
+      <div class="clearfix">
+        <span class="count-down">{{ calcRemainingDate(event.started_at, event.ended_at) }}</span>
+        <span class="date">更新日時: {{ event.updated_at | localDateTime }}</span>
+      </div>
+      <div class="clearfix">
+        <h1 class="trim">#{{ event.event_id }} - {{ event.title }}</h1>
+      </div>
+      <div class="item">
+        <p><strong>概要</strong>: {{ event.catch !== '' ? event.catch : '(概要はありません)' }}</p>
+        <p><strong>開催日時</strong>：{{ event.started_at | localDateTime }}〜{{ event.ended_at | localDateTime }}</p>
+        <p><strong>開催場所</strong>: {{ event.address }}</p>
+        <p><strong>開催会場</strong>: {{ event.place }}</p>
+        <p><strong>参加者数/定員数</strong>：{{ event.accepted }}／{{ event.limit !== null ? event.limit : '-' }} (<strong>補欠者数</strong>: {{ event.waiting }})</p>
+      </div>
     </a>
     <p v-if="event.series !== null">
-      グループタイトル: <a :href="event.series.url" target="_blank">{{ event.series.title }} (#{{ event.series.id }})</a>
+      <span class="group">
+        <strong>グループ名</strong>: <a :href="event.series.url" target="_blank">{{ event.series.title }} (#{{ event.series.id }})</a>
+      </span>
     </p>
-  </li>
+  </el-card>
 </template>
 
 <script>
@@ -81,44 +88,57 @@ export default {
 </script>
 
 <style scoped>
-h1,
-h2 {
-  font-weight: normal;
+h1 {
+  font-size: 12pt;
+  color: #364e96;
+  padding: 0.5em 0;
+  border-top: solid 3px #364e96;
+  border-bottom: solid 3px #364e96;
 }
 p {
   margin: 4px;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
 }
 a {
   text-decoration: none;
   color: #2c3e50;
 }
-li.panel {
-  margin: 0 10px;
-  color: #2c3e50;
-  padding: 20px;
-  margin-bottom: 10px;
-  display: inline-block;
-  width: 800px;
-  border-radius: 4px;
-  box-shadow: 0px 0px 5px;
-  text-align: left;
-}
-.filter {
-  display: flex;
-  justify-content: space-between;
-  width: 640px;
-  margin: 0 auto;
-}
-.blue {
-  color: rgb(20, 40, 131);
-}
 .trim {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+.item {
+  font-size: 14px;
+  margin-bottom: 18px;
+}
+.group {
+  font-size: 11pt;
+}
+.date {
+  font-size: small;
+  float: right;
+  padding: 3px 0;
+}
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: "";
+}
+.clearfix:after {
+  clear: both
+}
+.box-card {
+  width: 800px;
+  text-align: left;
+  padding: 12px;
+  margin-bottom: 10px;
+  display: inline-block;
+  border-radius: 6px;
+  box-shadow: 0px 0px 8px;
+}
+.count-down {
+  font-size: 16px;
+
+  color: rgb(255, 123, 0);
 }
 </style>

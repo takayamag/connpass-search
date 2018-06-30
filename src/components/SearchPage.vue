@@ -255,12 +255,12 @@ ul {
 }
 .search-form {
   color: #2c3e50;
-  padding: 20px;
+  padding: 20px 12px 8px 12px;
   margin-bottom: 10px;
   display: inline-block;
   width: 800px;
-  border-radius: 4px;
-  box-shadow: 0px 0px 5px;
+  border-radius: 6px;
+  box-shadow: 0px 0px 8px;
   text-align: left;
   text-decoration: none;
 }
