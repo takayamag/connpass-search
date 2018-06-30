@@ -2,7 +2,7 @@
   <el-input
     placeholder="関連キーワードを入力"
     v-model.trim="value"
-    @change='changeValue'
+    @change="changeValue"
     class="input-with-option"
     name="keyword">
   </el-input>
@@ -16,7 +16,7 @@ export default {
       type: String,
       required: false
     },
-    action: {
+    handleAction: {
       type: Function,
       required: true
     }
@@ -31,7 +31,7 @@ export default {
   },
   methods: {
     changeValue (value) {
-      this.action(value)
+      this.handleAction(value)
     }
   }
 }
@@ -47,19 +47,5 @@ export default {
 }
 .input-with-select .el-input-group__prepend {
   background-color: #fff;
-}
-
-.slide-fade-enter-active {
-  transition: all .3s ease;
-}
-
-.slide-fade-leave-active {
-  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
-}
-
-.slide-fade-enter, .slide-fade-leave-to
-{
-  transform: translateX(10px);
-  opacity: 0;
 }
 </style>

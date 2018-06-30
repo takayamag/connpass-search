@@ -18,7 +18,7 @@ export default {
       type: String,
       required: false // nullになる場合がある
     },
-    action: {
+    handleAction: {
       type: Function,
       required: true
     }
@@ -33,7 +33,7 @@ export default {
   },
   methods: {
     changeValue (value) {
-      this.action(value)
+      this.handleAction(value)
     }
   }
 }

@@ -27,7 +27,7 @@ export default {
       type: Number,
       required: true
     },
-    clickAction: {
+    handleAction: {
       type: Function,
       required: true
     }
@@ -46,7 +46,7 @@ export default {
   },
   methods: {
     changeValue (value) {
-      return this.clickAction(value)
+      return this.handleAction(value)
     }
   }
 }

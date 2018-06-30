@@ -1,16 +1,16 @@
 <template>
   <el-select
-    v-model='value'
-    value-key='value'
-    placeholder='都道府県を選択'
-    size='large'
-    @change='changeValue'
+    v-model="value"
+    value-key="value"
+    placeholder="都道府県を選択"
+    size="large"
+    @change="changeValue"
   >
     <el-option
-      v-for='item in items'
-      :key='item.value'
-      :label='item.label'
-      :value='item'
+      v-for="item in items"
+      :key="item.value"
+      :label="item.label"
+      :value="item"
     >
     </el-option>
   </el-select>
@@ -24,7 +24,7 @@ export default {
       type: String,
       required: true
     },
-    action: {
+    handleAction: {
       type: Function,
       required: true
     }
@@ -243,9 +243,9 @@ export default {
   methods: {
     changeValue (value) {
       if (value.label !== '未選択') {
-        this.action(value.label)
+        this.handleAction(value.label)
       } else {
-        this.action('')
+        this.handleAction('')
       }
     }
   }

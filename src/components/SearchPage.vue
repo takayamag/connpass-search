@@ -2,29 +2,29 @@
   <div>
     <el-container>
       <el-main>
-        <h2>こんぱすさーち</h2>
+        <h1>こんぱすさーち</h1>
         <div class="search-form">
 
           <el-form
             label-width="140px"
             ref="searchForm"
             :model="this.queryParams"
-            :rules="searchFormRules">
+            :rules="this.searchFormRules">
 
             <el-row :gutter="10">
               <el-col :span="17">
-                <el-form-item label='キーワード' prop='keyword'>
+                <el-form-item label="キーワード" prop="keyword">
                   <input-keyword
                     :input-value="this.queryParams.keyword"
-                    :action="this.handleKeywordChange"
+                    :handle-action="this.handleKeywordChange"
                   />
                 </el-form-item>
               </el-col>
               <el-col :span="7">
-                <el-form-item label-width="0" :xs="24" :sm="8">
+                <el-form-item label-width="0">
                   <select-search-mode
                     :input-value="this.searchMode"
-                    :action="this.handleSearchModeChange"
+                    :handle-action="this.handleSearchModeChange"
                   />
                 </el-form-item>
               </el-col>
@@ -32,18 +32,18 @@
 
             <el-row :gutter="10">
               <el-col :span="10">
-                <el-form-item label='都道府県' :xs="24" :sm="8">
+                <el-form-item label="都道府県">
                   <select-prefecture
                     :input-value="this.prefecture"
-                    :action="this.handlePrefectureChange"
+                    :handle-action="this.handlePrefectureChange"
                   />
                 </el-form-item>
               </el-col>
               <el-col :span="14">
-                <el-form-item label='開催月' :xs="24" :sm="8">
+                <el-form-item label="開催月">
                   <select-target-month
                     :input-value="this.queryParams.ym"
-                    :action="this.handleDatePickerChange"
+                    :handle-action="this.handleDatePickerChange"
                   />
                 </el-form-item>
               </el-col>
@@ -51,10 +51,10 @@
 
             <el-row :gutter="10">
               <el-col :span="10">
-                <el-form-item label='検索結果の表示順' :xs="24" :sm="8">
+                <el-form-item label="検索結果の表示">
                   <select-result-order
                     :input-value="this.queryParams.order"
-                    :action="this.handleResultOrderChange"
+                    :handle-action="this.handleResultOrderChange"
                   />
                 </el-form-item>
               </el-col>
@@ -63,7 +63,7 @@
                   <el-button
                     type="primary"
                     @click="this.handleFormSubmission"
-                    style="width: 220px;"
+                    class="submit-button"
                     v-loading="this.state.isLoading">
                     検索する
                   </el-button>
@@ -87,12 +87,12 @@
           <template v-if="this.state.isLoading === false">
 
             <template v-if="this.state.events.length !== 0">
-              <p>{{this.resultsAvailable}} 件のイベントが見つかりました</p>
+              <p>{{ this.resultsAvailable }} 件のイベントが見つかりました</p>
               <pagination-module
                 :total-items="this.resultsAvailable"
                 :current-page="this.queryParams.start"
                 :page-size="this.queryParams.count"
-                :click-action="this.handlePageChange"
+                :handle-action="this.handlePageChange"
               />
 
               <div class="spacer-bottom-24"></div>
@@ -103,12 +103,12 @@
                 :key="event.event_id"
               />
 
-              <p>{{resultsAvailable}} 件のイベントが見つかりました</p>
+              <p>{{ resultsAvailable }} 件のイベントが見つかりました</p>
               <pagination-module
                 :total-items="this.resultsAvailable"
                 :current-page="this.queryParams.start"
                 :page-size="this.queryParams.count"
-                :click-action="this.handlePageChange"
+                :handle-action="this.handlePageChange"
               />
 
             </template>
@@ -225,8 +225,6 @@ export default {
         if (valid) {
           this.setQueryParams({ start: number })
           this.search()
-        } else {
-          console.log('Validation error!')
         }
       })
     },
@@ -236,8 +234,6 @@ export default {
         if (valid) {
           this.setQueryParams({ start: 1 })
           this.search()
-        } else {
-          console.log('Validation error!')
         }
       })
     }
@@ -246,8 +242,8 @@ export default {
 </script>
 
 <style scoped>
-h1,
-h2 {
+h1 {
+  font-size: 24px;
   font-weight: normal;
 }
 p {
@@ -267,6 +263,9 @@ ul {
   box-shadow: 0px 0px 5px;
   text-align: left;
   text-decoration: none;
+}
+.submit-button {
+  width: 220px;
 }
 a {
   text-decoration: none;

@@ -1,16 +1,16 @@
 <template>
   <el-select
-    v-model='value'
-    value-key='value'
-    placeholder='表示順を選択'
-    size='large'
-    @change='changeValue'>
+    v-model="value"
+    value-key="value"
+    placeholder="表示順を選択"
+    size="large"
+    @change="changeValue">
 
     <el-option
-      v-for='item in items'
-      :key='item.value'
-      :label='item.label'
-      :value='item'>
+      v-for="item in items"
+      :key="item.value"
+      :label="item.label"
+      :value="item">
     </el-option>
   </el-select>
 </template>
@@ -23,7 +23,7 @@ export default {
       type: Number,
       required: true
     },
-    action: {
+    handleAction: {
       type: Function,
       required: true
     }
@@ -58,7 +58,7 @@ export default {
   },
   methods: {
     changeValue (value) {
-      this.action(value.value)
+      this.handleAction(value.value)
     }
   }
 }
