@@ -1,9 +1,12 @@
 import moment from 'moment'
 moment.locale('ja')
 
+// アクセスした年月をymパラメータの初期値にセットする
 let today = moment()
 let ym = today.format('YYYYMM')
 
+// connpass API リファレンス イベントサーチAPIを元にパラメータを用意する
+// https://connpass.com/about/api/
 const itemList = {
   resultsReturned: 0, // 含まれる検索結果の件数
   resultsAvailable: 0, // 検索結果の総件数

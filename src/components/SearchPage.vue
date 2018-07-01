@@ -187,6 +187,54 @@ export default {
       setSearchMode: 'event/setSearchMode'
     }),
 
+    // 都道府県の状態が変更された時の処理
+    // 未選択の場合は空文字('')が引数 value にセットされる
+    handlePrefectureChange (value) {
+      this.setPrefecture({ prefecture: value })
+    },
+
+    // 検索モード(AND検索 or OR検索)の状態が変更された時の処理
+    handleSearchModeChange (value) {
+      this.setSearchMode({ searchMode: value })
+    },
+
+    // キーワード入力欄の状態が変更された時の処理
+    handleKeywordChange (keyword) {
+      this.setQueryParams({ keyword: keyword })
+    },
+
+    // カレンダーの状態が変更された時の処理
+    handleDatePickerChange (value) {
+      this.setQueryParams({ ym: value })
+    },
+
+    // 検索結果の並び順の状態が変更された時の処理
+    handleResultOrderChange (value) {
+      this.setQueryParams({ order: value })
+    },
+
+    // ページ番号を変更した時の処理
+    // 引数 number には変更後のページ番号が入っている
+    handlePageChange (number) {
+      this.$refs['searchForm'].validate((valid) => {
+        if (valid) {
+          this.setQueryParams({ start: number })
+          this.search()
+        }
+      })
+    },
+
+    // 検索ボタンを押下した時の処理
+    handleFormSubmission () {
+      this.$refs['searchForm'].validate((valid) => {
+        if (valid) {
+          this.setQueryParams({ start: 1 }) // ページネーションは1ページ目をセットする
+          this.search()
+        }
+      })
+    },
+
+    // 検索やページ番号が変更になった時に検索を実行し、その結果を保存する
     search () {
       this.getEvents({
         queryParams: this.queryParams,
@@ -199,44 +247,6 @@ export default {
         .catch(error => {
           console.log(error)
         })
-    },
-
-    handlePrefectureChange (value) {
-      this.setPrefecture({ prefecture: value })
-    },
-
-    handleResultOrderChange (value) {
-      this.setQueryParams({ order: value })
-    },
-
-    handleSearchModeChange (value) {
-      this.setSearchMode({ searchMode: value })
-    },
-
-    handleKeywordChange (keyword) {
-      this.setQueryParams({ keyword: keyword })
-    },
-
-    handleDatePickerChange (value) {
-      this.setQueryParams({ ym: value })
-    },
-
-    handlePageChange (number) {
-      this.$refs['searchForm'].validate((valid) => {
-        if (valid) {
-          this.setQueryParams({ start: number })
-          this.search()
-        }
-      })
-    },
-
-    handleFormSubmission () {
-      this.$refs['searchForm'].validate((valid) => {
-        if (valid) {
-          this.setQueryParams({ start: 1 })
-          this.search()
-        }
-      })
     }
   }
 }

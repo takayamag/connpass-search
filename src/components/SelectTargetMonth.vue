@@ -16,7 +16,7 @@ export default {
   props: {
     inputValue: {
       type: String,
-      required: false // nullになる場合がある
+      required: false // 開催月未指定の時を考慮する
     },
     handleAction: {
       type: Function,

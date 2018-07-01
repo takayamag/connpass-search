@@ -64,11 +64,13 @@ export default {
   mounted () {
   },
   filters: {
+    // ISO-8601形式の日付を変換するフィルタ
     localDateTime (value) {
       return moment(value).format('YYYY/MM/DD HH:mm')
     }
   },
   methods: {
+    // イベントがいつ開催されるのかを現在と開催日との差分を取ってラベル化することで視覚的に分かりやすくする
     calcRemainingDate (startDateTime, endDateTime) {
       const DATE_FORMAT = 'YYYY-MM-DD'
       const TODAY = moment(moment().format(DATE_FORMAT)) // 本日の日付を時刻を省いて取得

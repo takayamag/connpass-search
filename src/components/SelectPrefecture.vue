@@ -229,6 +229,7 @@ export default {
     }
   },
   created () {
+    // 現在選択中の都道府県をセットする
     let label = this.inputValue
     let selectedValue = {}
     if (label !== '') {
@@ -243,9 +244,10 @@ export default {
   methods: {
     changeValue (value) {
       if (value.label !== '未選択') {
+        // 都道府県情報はキーワード検索の条件の一つに追加されるため、都道府県名のテキストを渡す
         this.handleAction(value.label)
       } else {
-        this.handleAction('')
+        this.handleAction('') // 未選択なら空文字('')を渡す
       }
     }
   }

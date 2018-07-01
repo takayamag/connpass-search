@@ -48,6 +48,7 @@ export default {
     }
   },
   created () {
+    // 現在選択中の検索結果の表示順をセットする
     let order = this.inputValue
     let selectedValue = this.items.filter(function (item) {
       if (item.value === order) {
@@ -58,6 +59,7 @@ export default {
   },
   methods: {
     changeValue (value) {
+      // 検索条件指定のために order パラメータへ数値を渡す
       this.handleAction(value.value)
     }
   }

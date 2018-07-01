@@ -44,6 +44,7 @@ export default {
     }
   },
   created () {
+    // 現在選択中の検索モード(AND or OR検索)をセットする
     let mode = this.inputValue
     let selectedItem = this.items.filter(function (item) {
       if (item.value === mode) {
@@ -54,6 +55,9 @@ export default {
   },
   methods: {
     changeValue (value) {
+      // AND検索の 1 を渡すとキーワード検索のパラメータとして keyword が使われる
+      // OR検索の 2 を渡すとキーワード検索のパラメータとして keyword_or が使われる
+      // connpassApi.js 内の getItems メソッドで分岐する
       this.handleAction(value.value)
     }
   }
