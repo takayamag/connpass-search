@@ -11,8 +11,8 @@ import store from './store'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import ElementUIJaLocale from 'element-ui/lib/locale/lang/ja'
-
 Vue.use(ElementUI, { ElementUIJaLocale })
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
