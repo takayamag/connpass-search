@@ -19,7 +19,7 @@ func main() {
 	// Middleware
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
-	e.Use(middleware.Gzip())
+	// e.Use(middleware.Gzip())
 
 	// CSRF Middleware
 	// e.Use(middleware.CSRFWithConfig(middleware.CSRFConfig{
