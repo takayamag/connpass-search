@@ -2,6 +2,7 @@
 
 > Connpass Search Project
 
-## Build Setup
+## How to use
 
-## Deploy to Heroku
+Qiitaに関連記事を書きました。
+https://qiita.com/takayamag/items/07a285c8f3d56dce7037
